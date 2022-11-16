@@ -32,4 +32,9 @@ export const Link = styled(NavLink)`
     color: white;
     background-color: orangered;
   }
+
+  :hover:not(.active),
+  :focus-visible:not(.active){
+    color: orangered;
+  }
 `;

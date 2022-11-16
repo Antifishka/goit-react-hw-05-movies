@@ -1,0 +1,18 @@
+import { Outlet } from "react-router-dom";
+import { Container, Header, Link } from "./ShredLayout.styled";
+
+export const SharedLayout = () => {
+  return (
+    <Container>
+      <Header>
+        <nav>
+          <Link to="/" end>
+            Home
+          </Link>
+          <Link to="/movies">About</Link>
+        </nav>
+      </Header>
+      <Outlet />  
+    </Container>
+  );
+};

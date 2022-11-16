@@ -1,13 +1,34 @@
+import { useEffect } from "react";
+import { useState } from "react";
+import API from '../helpers/api';
+
 export const Home = () => {
+  const [trendingMovies, setTrendingMovies] = useState([]);
+
+  useEffect(() => {
+    fetchTrendinngMovies();
+
+    async function fetchTrendinngMovies() {
+      try {
+      const fetchMovies = await API.fetchTrendingMovies();
+      console.log(fetchMovies);
+      //Порядок важен! Сначала кладем данные, потом статус.
+      setTrendingMovies(fetchMovies);
+
+      } catch (error) {
+      console.log(error);
+      };
+    };
+  })
+
   return (
     <main>
-      <h1>Welcome</h1>
-      <img src="https://via.placeholder.com/960x240" alt="" />
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto,
-        laboriosam placeat incidunt rem illum animi nemo quibusdam quia
-        voluptatum voluptate.
-      </p>
+      <ul>
+        <li>
+          {}
+        </li>
+      </ul>
     </main>
+
   );
 };
