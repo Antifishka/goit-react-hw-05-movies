@@ -1,15 +1,16 @@
-import { useParams, Outlet } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getProductById } from "../fakeAPI";
 
 export const MovieDetails = () => {
-  const { id } = useParams();
-  const product = getProductById(id);
+  const { movieId } = useParams();
+  const product = getProductById();
   return (
     <main>
+      <div> MovieDetails {movieId}
       <img src="https://via.placeholder.com/960x240" alt="" />
       <div>
         <h2>
-          Product - {product.name} - {id}
+          Product - {product.name} - {}
         </h2>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus
@@ -20,7 +21,7 @@ export const MovieDetails = () => {
           praesentium ipsum quos unde voluptatum?
         </p>
           </div>
-          <Outlet />
+      </div>
     </main>
   );
 };

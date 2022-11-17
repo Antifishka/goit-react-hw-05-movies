@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import { GlobalStyle } from "./GlobalStyles";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
-import { Home } from "../pages/Home";
-import { Movies } from "../pages/Movies";
+import { Home } from "../pages/Home/Home";
+import { Movies } from "../pages/Movies/Movies";
 import { MovieDetails } from "../pages/MovieDetails";
 import { Cast } from "./Cast/Cast";
 import { Reviews } from "./Reviews/Reviews";
