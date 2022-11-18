@@ -7,9 +7,9 @@ export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
-    fetchTrendinngMovies();
+    getTrendinngMovies();
 
-    async function fetchTrendinngMovies() {
+    async function getTrendinngMovies() {
       try {
         const fetchMovies = await API.fetchTrendingMovies();
         console.log(fetchMovies);

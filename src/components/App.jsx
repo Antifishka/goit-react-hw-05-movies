@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { GlobalStyle } from "./GlobalStyles";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { SharedLayout } from "./SharedLayout/SharedLayout";
 import { Home } from "../pages/Home/Home";
 import { Movies } from "../pages/Movies/Movies";
@@ -22,6 +24,7 @@ export const App = () => {
         </Route>  
       </Routes>
       <GlobalStyle />
+      <ToastContainer autoClose={2500} theme="colored"/>
     </>  
   );
 };

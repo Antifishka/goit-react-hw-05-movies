@@ -1,44 +1,49 @@
-import { Outlet } from "react-router-dom";
-import { useState } from "react";
-import { toast } from 'react-toastify';
-import { BiSearch } from 'react-icons/bi';
-import { SearchForm, SearchFormInput, FormButton } from "./Movies.styled";
+import { useState, useEffect } from "react";
+import API from '../../helpers/api';
+import { MoviesList, Link } from "./Movies.styled";
+import { SearchForm } from "components/SearchForm/SearchForm";
 
 export const Movies = () => {
   const [query, setQuery] = useState('');
+  const [movies, setMovies] = useState([]);
 
-  const handleQueryChange = e => {
-    setQuery(e.currentTarget.value.toLowerCase());
-  };
+  useEffect(() => {
+    if (!query) {
+      //Первый рендер, query это пустая строка, не делаем fetch 
+      return;
+    }
+    getSearchMovies();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    
-    if (query.trim() === '') {
-      return toast.warn('Enter your query in the search bar!');
-    };    
+    async function getSearchMovies() {
+      try {
+        const fetchMovies = await API.fetchSearchMovies(query);
+        console.log(fetchMovies);
+        setMovies(fetchMovies);
 
-    setQuery('');
+      } catch (error) {
+        console.log(error);
+      };
+    };
+  }, [query]);
+
+  const handleFormSubmit = (query) => {
+    console.log(query);
+
+    setQuery(query);
+    setMovies([]);
   };
   
   return (
     <main>
-      <SearchForm onSubmit={handleSubmit}>
-        <SearchFormInput
-          type="text"
-          name="query" 
-          value={query}        
-          autoComplete="off"
-          autoFocus
-          placeholder="Search movies"
-          onChange={handleQueryChange}        
-        />
+      <SearchForm onSubmit={handleFormSubmit}/>
 
-        <FormButton type="submit">
-          <BiSearch size={24}/>
-        </FormButton>
-      </SearchForm>
-      <Outlet/>
+      <MoviesList>
+        {movies.map(({id, title}) => (
+          <li key={id}>
+            <Link to={`/movies/:${id}`}>{title}</Link>
+          </li>
+        ))}
+      </MoviesList>
     </main>
   );
 };
