@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import API from '../../helpers/api';
-import { MoviesList, Link } from "./Home.styled";
+import { HomeTitle, MoviesList, Link } from "./Home.styled";
 
 export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -23,10 +23,11 @@ export const Home = () => {
 
   return (
     <main>
+      <HomeTitle>Trending today</HomeTitle>
       <MoviesList>
         {trendingMovies.map(({id, title}) => (
           <li key={id}>
-            <Link to={`/movies/:${id}`}>{title}</Link>
+            <Link to={`/movies/${id}`}>{title}</Link>
           </li>
         ))}
       </MoviesList>

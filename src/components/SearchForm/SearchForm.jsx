@@ -23,7 +23,7 @@ export const SearchForm = ({onSubmit}) => {
   };
   
   return (
-    <main>
+    <>
         <Form onSubmit={handleSubmit}>
             <FormInput
             type="text"
@@ -39,7 +39,7 @@ export const SearchForm = ({onSubmit}) => {
             <BiSearch size={23}/>
             </FormButton>
         </Form>
-    </main>
+    </>
   );
 };
 

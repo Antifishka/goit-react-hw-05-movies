@@ -22,8 +22,9 @@ async function fetchTrendingMovies() {
 };
 
 async function fetchMovieById(id) {
-    const response = await apiInstance.get(`movie/${id}`);
-    return response;
+    const { data } = await apiInstance.get(`movie/${id}`);
+
+    return data;
 }
 
 async function fetchSearchMovies(query) {
@@ -38,10 +39,36 @@ async function fetchSearchMovies(query) {
     return searchMovies;
 }
 
+async function fetchMovieCredits(id) {
+    const response = await apiInstance.get(`movie/${id}/credits`);
+
+    const cast = response.data.cast;
+
+    if (!cast.length) {
+        throw new Error(`Not found cast...`)
+    }
+
+    return cast;
+}
+
+async function fetchMovieReviews(id) {
+    const response = await apiInstance.get(`movie/${id}/reviews`);
+
+    const reviews = response.data.results;
+
+    if (!reviews.length) {
+        throw new Error(`We don't have any reviews for this movie`)
+    }
+
+    return reviews;
+};
+
 const api = {
     fetchTrendingMovies,
     fetchMovieById,
     fetchSearchMovies,
-}
+    fetchMovieCredits,
+    fetchMovieReviews,
+};
 
 export default api;

@@ -5,7 +5,7 @@ export const Form = styled.form`
     align-items: center;
     width: 100%;
     max-width: 350px;
-    margin-bottom: 20px;
+    margin: 16px 0;
 `;
 
 export const FormInput = styled.input`

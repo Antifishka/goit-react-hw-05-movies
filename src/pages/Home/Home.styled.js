@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
+export const HomeTitle = styled.h2`
+  padding-top: 20px;
+  margin-bottom: 20px;
+`;
+
 export const MoviesList = styled.ul`
   display: flex;
   flex-direction: column;
