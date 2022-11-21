@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import API from "../../helpers/api";
-import { ReviewsList, ReviewsItem, ReviewsTitle } from "./Reviews.styled";
+import { ReviewsList, ReviewsItem, ReviewsTitle, Message } from "./Reviews.styled";
 
 export const Reviews = () => {
   const { movieId } = useParams(); 
@@ -11,20 +11,15 @@ export const Reviews = () => {
     getMovieReviews();
 
     async function getMovieReviews() {
-      try {
         const fetchReviews = await API.fetchMovieReviews(movieId);
         console.log(fetchReviews);
         setReviews(fetchReviews);
-
-      } catch (error) {
-        console.log(error);
-      };
     };
   }, [movieId]);
 
   return (
     <>
-      {reviews 
+      {reviews.length > 0
         ? <ReviewsList>
             {reviews.map(({ id, author, content }) => 
               <ReviewsItem key={id}>
@@ -32,7 +27,7 @@ export const Reviews = () => {
                 <p>{content}</p>
               </ReviewsItem>)} 
           </ReviewsList >
-        : <div>We don't have any reviews for this movie</div>}
+        : <Message>We don't have any reviews for this movie</Message>}
     </>
     
     

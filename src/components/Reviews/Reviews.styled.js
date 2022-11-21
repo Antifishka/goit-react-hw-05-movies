@@ -13,3 +13,7 @@ export const ReviewsItem = styled.li`
 export const ReviewsTitle = styled.h4`
   margin-bottom: 10px;
 `;
+
+export const Message = styled.p`
+  padding: 16px 0;
+`;

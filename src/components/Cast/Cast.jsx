@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import API from "../../helpers/api";
-
-const BASE_POSTER_URL = `https://image.tmdb.org/t/p/w100`;
+import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
+import { CastItem } from "./CastItem/CastItem";
+import { CastList } from "./Cast.styled";
 
 export const Cast = () => { 
   const { movieId } = useParams(); 
@@ -14,8 +15,10 @@ export const Cast = () => {
     async function getMovieCredits() {
       try {
         const fetchCast = await API.fetchMovieCredits(movieId);
-        console.log(fetchCast);
-        setCast(fetchCast);
+        
+        const actors = fetchCast.length > 16 ? fetchCast.slice(0, 16) : fetchCast;
+        console.log(actors);
+        setCast(actors);
 
       } catch (error) {
         console.log(error);
@@ -23,20 +26,21 @@ export const Cast = () => {
     };
   }, [movieId]);
 
+  if (!cast) return null;
+
   return (
-    <ul>
-      {cast.map(({ id, profile_path, original_name, character }) => {
-        return (
-          <li key={id}>
-            <img
-              src={`${BASE_POSTER_URL}/${profile_path}`}
-              alt={original_name}
-              width="100" />
-          <p>{original_name}</p>
-          <p>Character: {character}</p>
-        </li>)}
-        )
+    <CastList>
+      {cast.map(({ id, profile_path, original_name, character }) => 
+        <CastItem
+          id={id}
+          imagePath={
+            profile_path
+              ? BASE_IMAGE_URL + profile_path
+              : PlACEHOLDER_IMAGE_URL}
+          name={original_name}
+          character={character}
+        />)
       } 
-    </ul>
+    </CastList>
   );
 };

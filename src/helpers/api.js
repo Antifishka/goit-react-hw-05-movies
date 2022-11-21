@@ -56,10 +56,6 @@ async function fetchMovieReviews(id) {
 
     const reviews = response.data.results;
 
-    if (!reviews.length) {
-        throw new Error(`We don't have any reviews for this movie`)
-    }
-
     return reviews;
 };
 
