@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import API from '../../services/api';
-import { MoviesList, Link } from "./Movies.styled";
+import { MoviesList } from "./Movies.styled";
 import { SearchForm } from "components/SearchForm/SearchForm";
+import { MoviesItem } from "components/MoviesItem/MoviesItem";
+import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
 
 export const Movies = () => {
   const [query, setQuery] = useState('');
@@ -44,10 +46,17 @@ export const Movies = () => {
       <SearchForm onSubmit={handleFormSubmit} onChange={updateQueryString} />
 
       <MoviesList>
-        {movies.map(({id, title}) => (
-          <li key={id}>
-            <Link to={`/movies/${id}`}>{title}</Link>
-          </li>
+        {movies.map(({ id, title, poster_path, vote_average }) => (
+          <MoviesItem 
+            id={id}
+            title={title} 
+            imagePath={poster_path
+              ? BASE_IMAGE_URL + poster_path
+              : PlACEHOLDER_IMAGE_URL} 
+            vote={vote_average
+              ? vote_average.toFixed(1)
+              : `No vote`
+          } />
         ))}
       </MoviesList>
     </main>

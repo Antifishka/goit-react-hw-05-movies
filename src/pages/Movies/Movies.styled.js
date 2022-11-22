@@ -1,25 +1,10 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
 
 export const MoviesList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  max-width: calc(100vw - 48px);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
 `;
 
-export const Link = styled(NavLink)`
-  text-decoration: none;
-  color: inherit;
-  padding: 8px;
-  border-radius: 4px;
-
-  &.active{
-     
-  }
-
-  :hover:not(.active),
-  :focus-visible:not(.active){
-    color: white;
-    background-color: orangered;
-  }
-`;

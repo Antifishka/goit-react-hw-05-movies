@@ -37,7 +37,7 @@ export const SearchForm = ({onSubmit, onChange}) => {
             />
 
             <FormButton type="submit">
-            <BiSearch size={23}/>
+              <BiSearch size={23}/>
             </FormButton>
         </Form>
     </>

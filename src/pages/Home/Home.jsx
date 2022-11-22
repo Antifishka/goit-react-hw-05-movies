@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import API from '../../services/api';
 import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
 import { HomeTitle, MoviesList } from "./Home.styled";

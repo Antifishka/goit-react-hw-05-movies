@@ -27,13 +27,13 @@ export const MovieDetails = () => {
     return null;
   }
 
-  const { poster_path, title, vote_average, overview, genres } = movie;
+  const { poster_path, title, vote_average, overview, genres, release_date } = movie;
 
   const imagePath = poster_path
     ? BASE_IMAGE_URL + poster_path
     : PlACEHOLDER_POSTER_URL;
 
-  // const year = release_date.slice(0, 4);
+  const year = release_date ? release_date.slice(0, 4) : `No year`;
 
   const userScore = () => {
     return Math.round(vote_average * 10);
@@ -41,11 +41,12 @@ export const MovieDetails = () => {
 
   return (
     <main>
+
       <MovieBox> 
         <img src={imagePath} alt={title} width="200"/>
         <MovieInfo>
           <h2>{title}
-            {/* <span>({year})</span> */}
+            <span> ({year})</span>
           </h2>
           <p>User Score {userScore()}%</p>
           <h3>Overview</h3>
