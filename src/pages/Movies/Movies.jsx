@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import API from '../../helpers/api';
+import { useSearchParams } from "react-router-dom";
+import API from '../../services/api';
 import { MoviesList, Link } from "./Movies.styled";
 import { SearchForm } from "components/SearchForm/SearchForm";
 
 export const Movies = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     if (!query) {
@@ -32,10 +34,14 @@ export const Movies = () => {
     setQuery(query);
     setMovies([]);
   };
+
+  const updateQueryString = (value) => {
+    setSearchParams(value !== '' ? { search: value } : {});
+  };
   
   return (
     <main>
-      <SearchForm onSubmit={handleFormSubmit}/>
+      <SearchForm onSubmit={handleFormSubmit} onChange={updateQueryString} />
 
       <MoviesList>
         {movies.map(({id, title}) => (

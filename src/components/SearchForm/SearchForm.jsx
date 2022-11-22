@@ -4,11 +4,12 @@ import { BiSearch } from 'react-icons/bi';
 import { Form, FormInput, FormButton } from "./SearchForm.styled";
 import PropTypes from 'prop-types';
 
-export const SearchForm = ({onSubmit}) => {
+export const SearchForm = ({onSubmit, onChange}) => {
   const [query, setQuery] = useState('');
 
   const handleQueryChange = e => {
     setQuery(e.currentTarget.value.toLowerCase());
+    onChange(e.currentTarget.value.toLowerCase());
   };
 
   const handleSubmit = e => {

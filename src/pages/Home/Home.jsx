@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import API from '../../helpers/api';
-import { HomeTitle, MoviesList, Link } from "./Home.styled";
+import API from '../../services/api';
+import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
+import { HomeTitle, MoviesList } from "./Home.styled";
+import { MoviesItem } from "components/MoviesItem/MoviesItem";
 
 export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -25,10 +27,17 @@ export const Home = () => {
     <main>
       <HomeTitle>Trending today</HomeTitle>
       <MoviesList>
-        {trendingMovies.map(({id, title}) => (
-          <li key={id}>
-            <Link to={`/movies/${id}`}>{title}</Link>
-          </li>
+        {trendingMovies.map(({ id, title, poster_path, vote_average }) => (
+          <MoviesItem 
+            id={id}
+            title={title} 
+            imagePath={poster_path
+              ? BASE_IMAGE_URL + poster_path
+              : PlACEHOLDER_IMAGE_URL} 
+            vote={vote_average
+              ? vote_average.toFixed(1)
+              : `No vote`
+          } />
         ))}
       </MoviesList>
     </main>

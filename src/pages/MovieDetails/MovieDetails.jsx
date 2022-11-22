@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, Outlet } from "react-router-dom";
-import API from "../../helpers/api";
+import API from "../../services/api";
 import { BASE_IMAGE_URL, PlACEHOLDER_POSTER_URL } from 'constants/constants';
 import { MovieBox, MovieInfo, MovieCastBox, MovieGenres, MovieText, MovieItem } from "./MovieDetails.styled";
 

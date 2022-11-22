@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import API from "../../helpers/api";
+import API from "../../services/api";
 import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
 import { CastItem } from "./CastItem/CastItem";
 import { CastList } from "./Cast.styled";
