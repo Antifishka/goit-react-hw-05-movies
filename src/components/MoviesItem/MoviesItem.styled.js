@@ -49,4 +49,5 @@ export const MoviesVote = styled.p`
   background-color: orangered;
 
   font-size: 12px; 
+  font-weight: 600;
 `;

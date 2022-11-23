@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
+export const FormContainer = styled.div`
+    padding: 16px 0;
+`;
+
 export const Form = styled.form`
     position: relative;
     width: 100%;
     max-width: 350px;
-    margin: 16px 0;
+    margin: 0 auto;
     border-radius: 4px;
     overflow: hidden;
 `;

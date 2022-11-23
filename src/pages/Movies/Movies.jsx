@@ -3,12 +3,14 @@ import { useSearchParams } from "react-router-dom";
 import API from '../../services/api';
 import { MoviesList } from "./Movies.styled";
 import { SearchForm } from "components/SearchForm/SearchForm";
+import { Loader } from "components/Loader/Loader";
 import { MoviesItem } from "components/MoviesItem/MoviesItem";
 import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
 
-export const Movies = () => {
+const Movies = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
@@ -16,6 +18,7 @@ export const Movies = () => {
       //Первый рендер, query это пустая строка, не делаем fetch 
       return;
     }
+    setIsLoading(true);
     getSearchMovies();
 
     async function getSearchMovies() {
@@ -26,6 +29,8 @@ export const Movies = () => {
 
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       };
     };
   }, [query]);
@@ -45,9 +50,12 @@ export const Movies = () => {
     <main>
       <SearchForm onSubmit={handleFormSubmit} onChange={updateQueryString} />
 
+      {isLoading && <Loader />} 
+
       <MoviesList>
         {movies.map(({ id, title, poster_path, vote_average }) => (
           <MoviesItem 
+            key={id}
             id={id}
             title={title} 
             imagePath={poster_path
@@ -62,3 +70,5 @@ export const Movies = () => {
     </main>
   );
 };
+
+export default Movies;

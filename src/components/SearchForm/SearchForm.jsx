@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from 'react-toastify';
 import { BiSearch } from 'react-icons/bi';
-import { Form, FormInput, FormButton } from "./SearchForm.styled";
+import { FormContainer, Form, FormInput, FormButton } from "./SearchForm.styled";
 import PropTypes from 'prop-types';
 
 export const SearchForm = ({onSubmit, onChange}) => {
@@ -24,23 +24,23 @@ export const SearchForm = ({onSubmit, onChange}) => {
   };
   
   return (
-    <>
-        <Form onSubmit={handleSubmit}>
-            <FormInput
-            type="text"
-            name="query" 
-            value={query}        
-            autoComplete="off"
-            autoFocus
-            placeholder="Search movies"
-            onChange={handleQueryChange}        
-            />
+    <FormContainer>
+      <Form onSubmit={handleSubmit}>
+        <FormInput
+          type="text"
+          name="query" 
+          value={query}        
+          autoComplete="off"
+          autoFocus
+          placeholder="Search movies"
+          onChange={handleQueryChange}        
+        />
 
-            <FormButton type="submit">
-              <BiSearch size={23}/>
-            </FormButton>
-        </Form>
-    </>
+        <FormButton type="submit">
+          <BiSearch size={23}/>
+        </FormButton>
+      </Form>
+    </FormContainer>
   );
 };
 

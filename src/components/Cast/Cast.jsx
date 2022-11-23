@@ -5,7 +5,7 @@ import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
 import { CastItem } from "./CastItem/CastItem";
 import { CastList } from "./Cast.styled";
 
-export const Cast = () => { 
+const Cast = () => { 
   const { movieId } = useParams(); 
   const [cast, setCast] = useState([]);
 
@@ -44,3 +44,5 @@ export const Cast = () => {
     </CastList>
   );
 };
+ 
+export default Cast;

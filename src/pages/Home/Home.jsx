@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import API from '../../services/api';
+import { Loader } from "components/Loader/Loader";
 import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
 import { HomeTitle, MoviesList } from "./Home.styled";
 import { MoviesItem } from "components/MoviesItem/MoviesItem";
 
-export const Home = () => {
+const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getTrendinngMovies();
 
     async function getTrendinngMovies() {
@@ -18,6 +21,8 @@ export const Home = () => {
 
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       };
     };
   }, []);
@@ -25,9 +30,13 @@ export const Home = () => {
   return (
     <main>
       <HomeTitle>Trending today</HomeTitle>
+
+      {isLoading && <Loader />} 
+
       <MoviesList>
         {trendingMovies.map(({ id, title, poster_path, vote_average }) => (
           <MoviesItem 
+            key={id}
             id={id}
             title={title} 
             imagePath={poster_path
@@ -42,3 +51,5 @@ export const Home = () => {
     </main>
   );
 };
+
+export default Home;

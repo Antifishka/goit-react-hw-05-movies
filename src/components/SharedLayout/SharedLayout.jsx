@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
+import { Loader } from "components/Loader/Loader";
 import { Container, Header, Link } from "./ShredLayout.styled";
 
 export const SharedLayout = () => {
@@ -12,7 +14,10 @@ export const SharedLayout = () => {
           <Link to="/movies">Movies</Link>
         </nav>
       </Header>
-      <Outlet />  
+      
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense> 
     </Container>
   );
 };
