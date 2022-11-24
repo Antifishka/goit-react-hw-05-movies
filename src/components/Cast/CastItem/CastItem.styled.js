@@ -8,6 +8,11 @@ export const CardWrapper = styled.li`
    0 2px 1px -1px rgb(0 0 0 / 12%);
 `;
 
+export const CardImg = styled.img`
+  width: 100%;
+  object-fit: cover;
+`;
+
 export const CardInfo = styled.div`
   display: flex;
   flex-direction: column;

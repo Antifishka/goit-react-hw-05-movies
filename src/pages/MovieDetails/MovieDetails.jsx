@@ -1,8 +1,8 @@
 import { useState, useEffect, Suspense } from "react";
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Outlet } from "react-router-dom";
 import API from "../../services/api";
 import { BASE_IMAGE_URL, PlACEHOLDER_POSTER_URL } from 'constants/constants';
-import { MovieBox, MovieImg, MovieInfo, MovieCastBox, MovieGenres, MovieText, MovieItem } from "./MovieDetails.styled";
+import { MovieBox, MovieImg, MovieInfo, MovieAdditionalBox, MovieGenres, MovieAdditionalTitle, MovieAdditionalList, Link } from "./MovieDetails.styled";
 import { BackButton } from "components/BackButton/BackButton";
 
 const MovieDetails = () => {
@@ -40,8 +40,6 @@ const MovieDetails = () => {
     return Math.round(vote_average * 10);
   }
 
-  // const backLinkHref = location.state?.from ?? '/';
-
   return (
     <main>
       <BackButton>Go back</BackButton>
@@ -62,17 +60,17 @@ const MovieDetails = () => {
         </MovieInfo>
       </MovieBox>
       
-      <MovieCastBox>
-        <MovieText>Additional infomation</MovieText>
-        <ul>
-          <MovieItem>
+      <MovieAdditionalBox>
+        <MovieAdditionalTitle>Additional infomation</MovieAdditionalTitle>
+        <MovieAdditionalList>
+          <li>
             <Link to="cast">Cast</Link>
-          </MovieItem>
-          <MovieItem>
+          </li>
+          <li>
             <Link to="reviews">Reviews</Link>
-          </MovieItem>
-        </ul>
-      </MovieCastBox>
+          </li>
+        </MovieAdditionalList>
+      </MovieAdditionalBox>
 
       <Suspense fallback={null}>
         <Outlet/>

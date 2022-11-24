@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const MovieBox = styled.div`
   display: flex;
@@ -26,21 +27,39 @@ export const MovieGenres = styled.ul`
 
 `;
 
-export const MovieCastBox = styled.div`
+export const MovieAdditionalBox = styled.div`
   padding: 16px 0;
   border-bottom: 1px solid black;
+  text-align: center;
 `;
 
-export const MovieText = styled.div`
-  margin-bottom: 15px;
+export const MovieAdditionalTitle = styled.h2`
+  margin-bottom: 12px;
 `;
 
-export const MovieItem = styled.li`
-  margin-bottom: 5px;
-  margin-left: 20px;
-  list-style: inside;
+export const MovieAdditionalList = styled.ul`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+`;
 
-  :last-child{
-    margin-bottom: 0px;
+export const Link = styled(NavLink)`
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: black;
+  font-weight: 500;
+  font-size: 16px;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &.active {
+    color: white;
+    background-color: orangered;
+  }
+
+  :hover:not(.active),
+  :focus-visible:not(.active){
+    color: orangered;
   }
 `;

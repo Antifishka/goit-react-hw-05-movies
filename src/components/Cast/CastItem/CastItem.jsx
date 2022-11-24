@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import { CardWrapper, CardInfo, CardText } from './CastItem.styled';
+import { CardWrapper, CardImg, CardInfo, CardText } from './CastItem.styled';
 
 export const CastItem = ({id, imagePath, name, character}) => {
     return (
         <CardWrapper key={id}>
-            <img src={imagePath} alt={name} width="100" />
+            <CardImg src={imagePath} alt={name} width="100" />
 
             <CardInfo>
                 <h4>{name}</h4>
@@ -12,7 +12,6 @@ export const CastItem = ({id, imagePath, name, character}) => {
             </CardInfo>
         </CardWrapper>
     );
-
 };
 
 CastItem.propTypes = {
