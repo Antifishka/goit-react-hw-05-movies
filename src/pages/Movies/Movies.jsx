@@ -8,10 +8,10 @@ import { MoviesItem } from "components/MoviesItem/MoviesItem";
 import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
 
 const Movies = () => {
-  const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get('search') ?? '');
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     if (!query) {

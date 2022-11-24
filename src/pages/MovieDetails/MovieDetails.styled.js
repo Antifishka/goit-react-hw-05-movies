@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MovieBox = styled.div`
   display: flex;
-  padding: 16px 0;
+  padding: 8px 0 16px 0;
   border-bottom: 1px solid black;
 `;
 

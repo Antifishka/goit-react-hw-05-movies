@@ -39,7 +39,7 @@ export const MoviesCardInfo = styled.div`
 `;
 
 export const MoviesTitle = styled.h4`
-  max-width: 160px; 
+  max-width: 158px; 
 `;
 
 export const MoviesVote = styled.p`
