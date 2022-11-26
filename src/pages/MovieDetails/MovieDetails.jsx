@@ -8,6 +8,8 @@ import { BackButton } from "components/BackButton/BackButton";
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
+   const { pathname, search } = useLocation();
+    const fromPage = `${pathname}${search}`;
   
   useEffect(() => {
     getMovieById();
@@ -64,10 +66,10 @@ const MovieDetails = () => {
         <MovieAdditionalTitle>Additional infomation</MovieAdditionalTitle>
         <MovieAdditionalList>
           <li>
-            <Link to="cast">Cast</Link>
+            <Link to="cast" state={{from: fromPage}}>Cast</Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" state={{from: fromPage}}>Reviews</Link>
           </li>
         </MovieAdditionalList>
       </MovieAdditionalBox>
