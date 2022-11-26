@@ -5,11 +5,8 @@ import { StyledLink } from "./BackButton.styled";
 export const BackButton = ({children}) => {
     const { state } = useLocation();
 
-    if (!state?.from) {
-        return null;
-    };
-
-    return <StyledLink to={state.from}>
+ 
+    return <StyledLink to={state?.from || '/'}>
         <BsArrowLeft size={16}/>
         {children}</StyledLink>
 }
