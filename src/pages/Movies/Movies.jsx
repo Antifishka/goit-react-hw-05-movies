@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import API from '../../services/api';
+import { toast } from 'react-toastify';
 import { MoviesList } from "./Movies.styled";
 import { SearchForm } from "components/SearchForm/SearchForm";
 import { Loader } from "components/Loader/Loader";
@@ -29,6 +30,7 @@ const Movies = () => {
 
       } catch (error) {
         console.log(error);
+        toast.error(`Sorry, there are no movies matching your search query. Please try again.`);
       } finally {
         setIsLoading(false);
       };

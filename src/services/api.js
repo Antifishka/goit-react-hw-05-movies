@@ -15,7 +15,7 @@ async function fetchTrendingMovies() {
     const trendingMovies = response.data.results;
 
     if (!trendingMovies.length) {
-        throw new Error(`Sorry, there are no movies matching your search query. Please try again.`)
+        throw new Error(`Sorry, there are no movies.`)
     }
 
     return trendingMovies;

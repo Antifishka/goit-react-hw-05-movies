@@ -8,8 +8,8 @@ import { BackButton } from "components/BackButton/BackButton";
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
-   const { pathname, search } = useLocation();
-    const fromPage = `${pathname}${search}`;
+  const { pathname, search } = useLocation();
+  const fromPage = `${pathname}${search}`;
   
   useEffect(() => {
     getMovieById();
