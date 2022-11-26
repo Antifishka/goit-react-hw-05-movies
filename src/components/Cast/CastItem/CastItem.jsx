@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { CardWrapper, CardImg, CardInfo, CardText } from './CastItem.styled';
 
-export const CastItem = ({id, imagePath, name, character}) => {
+export const CastItem = ({ imagePath, name, character}) => {
     return (
-        <CardWrapper key={id}>
+        <CardWrapper>
             <CardImg src={imagePath} alt={name} width="100" />
 
             <CardInfo>
@@ -15,7 +15,6 @@ export const CastItem = ({id, imagePath, name, character}) => {
 };
 
 CastItem.propTypes = {
-    id: PropTypes.number.isRequired,
     imagePath: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     character: PropTypes.string.isRequired,

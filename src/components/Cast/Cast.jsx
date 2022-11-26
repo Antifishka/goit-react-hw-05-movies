@@ -32,7 +32,7 @@ const Cast = () => {
     <CastList>
       {cast.map(({ id, profile_path, original_name, character }) => 
         <CastItem
-          id={id}
+          key={id}
           imagePath={
             profile_path
               ? BASE_IMAGE_URL + profile_path

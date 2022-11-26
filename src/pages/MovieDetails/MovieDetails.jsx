@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense } from "react";
-import { useParams, Outlet } from "react-router-dom";
+import { useParams, Outlet, useLocation } from "react-router-dom";
 import API from "../../services/api";
 import { BASE_IMAGE_URL, PlACEHOLDER_POSTER_URL } from 'constants/constants';
 import { MovieBox, MovieImg, MovieInfo, MovieAdditionalBox, MovieGenres, MovieAdditionalTitle, MovieAdditionalList, Link } from "./MovieDetails.styled";
